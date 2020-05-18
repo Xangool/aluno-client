@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { AlunoModel } from "../models/alunos";
 
 @Component({
   selector: "app-aluno",
