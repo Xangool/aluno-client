@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "aluno-client": {
@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "aluno-client"
+    }
+  },
+  "defaultProject": "aluno-client",
+  "cli": {
+    "analytics": "9d10ca96-a955-46b3-94db-9f525f7c67a2"
+  }
 }
