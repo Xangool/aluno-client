@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { AlunoModel } from "../models/alunos";
+import { AlunoModelo } from "../modelos/aluno";
 
 @Component({
   selector: "app-aluno",
@@ -13,7 +13,16 @@ import { AlunoModel } from "../models/alunos";
   styles: [``],
 })
 export class AlunoComponent implements OnInit {
+
+  public alunos = Array(AlunoModelo);
+
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // this.alunos = this.ser
+
+
+
+
+  }
 }

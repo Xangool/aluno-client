@@ -1,4 +1,4 @@
-export class AlunoModel {
+export class AlunoModelo {
 
   public id: string;
 
@@ -23,5 +23,17 @@ export class AlunoModel {
     if (dataNascimento !== null && dataNascimento !== undefined) {
       this.dataNascimento = dataNascimento;
     }
+
   }
+  public static factory(source: any): AlunoModelo {
+		let target = new AlunoModelo();
+		if ((source !== null) && (source !== undefined)) {
+			if (source.id !== undefined) target.id = source.id;
+			if (source.nome !== undefined) target.nome = source.nome;
+			if (source.cpf !== undefined) target.cpf = source.cpf;
+			if (source.matricula !== undefined) target.matricula = source.matricula;
+			if (source.dataNascimento !== undefined) target.dataNascimento = source.dataNascimento;
+		}
+		return target;
+	}
 }
