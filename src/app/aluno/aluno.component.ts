@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-aluno',
-  templateUrl: './aluno.component.html',
-  styleUrls: ['./aluno.component.css']
+  selector: "app-aluno",
+  template: `
+    <div>
+      <h1>
+        Olá mundo
+      </h1>
+    </div>
+  `,
+  styles: [``],
 })
 export class AlunoComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
