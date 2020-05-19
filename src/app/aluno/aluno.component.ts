@@ -1,28 +1,31 @@
 import { Component, OnInit } from "@angular/core";
 import { AlunoModelo } from "../modelos/aluno";
+import { AlunoService } from "../aluno.service";
 
 @Component({
   selector: "app-aluno",
   template: `
-    <div>
-      <h1>
-        Olá mundo
-      </h1>
-    </div>
+    <ul>
+      <li *ngFor="let aluno of alunos">
+        {{ aluno.nome }}
+      </li>
+    </ul>
   `,
   styles: [``],
 })
 export class AlunoComponent implements OnInit {
+  public alunos = Array<AlunoModelo>();
 
-  public alunos = Array(AlunoModelo);
-
-  constructor() {}
+  constructor(private alunoService: AlunoService) {}
 
   ngOnInit(): void {
-    // this.alunos = this.ser
-
-
-
-
+    this.alunoService
+      .listaTodos()
+      .then((entities: Array<AlunoModelo>) => {
+        this.alunos = entities;
+      })
+      .catch((erro: any) => {
+        console.error(erro);
+      });
   }
 }

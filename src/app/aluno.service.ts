@@ -11,24 +11,24 @@ export class AlunoService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public retrieve(aluno: AlunoModelo): Promise<AlunoModelo[]> {
-    let path = 'localhost:3000/alunos';
+  public listaTodos(): Promise<AlunoModelo[]> {
 
-    return this.httpClient.get<Array<AlunoModelo>>(path, this.httpOptions)
+    let url = 'http://localhost:3000/alunos';
+    return this.httpClient.get<Array<AlunoModelo>>(url, this.httpOptions)
 			.toPromise()
-			.then((response) => {
-				let expenseArray: Array<AlunoModelo> = new Array<AlunoModelo>();
-				if (((response !== null) && (response !== undefined))) {
-					for (let expense of response) {
-						expenseArray.push(AlunoModelo.factory(expense));
+			.then((resposta) => {
+        let alunoLista: Array<AlunoModelo> = new Array<AlunoModelo>();
+				if (((resposta !== null) && (resposta !== undefined))) {
+          console.log(resposta)
+					for (let aluno of resposta) {
+						alunoLista.push(AlunoModelo.factory(aluno));
 					}
 				}
-				return Promise.resolve(expenseArray);
+				return Promise.resolve(alunoLista);
 			})
-			.catch((error: any) => {
-				return Promise.reject(error);
+			.catch((erro: any) => {
+				return Promise.reject(erro);
 			});
-
   }
 
   httpOptions = {
