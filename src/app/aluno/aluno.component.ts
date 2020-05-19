@@ -2,24 +2,18 @@ import { Component, OnInit } from "@angular/core";
 import { AlunoModelo } from "../modelos/aluno";
 import { AlunoService } from "../aluno.service";
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
+const ELEMENT_DATA: AlunoModelo[] = [
+  {id: "1", nome: 'Hydrogen', cpf: "1.0079", matricula: "H", dataNascimento: "2020"},
+  {id: "2", nome: 'Helium', cpf: "4.0026", matricula: 'He', dataNascimento: "2020"},
+  {id: "3", nome: 'Lithium', cpf: "6.941", matricula: 'Li', dataNascimento: "2020"},
+  {id: "4", nome: 'Beryllium', cpf: "9.0122", matricula: 'Be', dataNascimento: "2020"},
+  {id: "5", nome: 'Boron', cpf: "10.811", matricula: 'B', dataNascimento: "2020"},
+  {id: "6", nome: 'Carbon', cpf: "12.0107", matricula: 'C', dataNascimento: "2020"},
+  {id: "7", nome: 'Nitrogen', cpf: "14.0067", matricula: 'N', dataNascimento: "2020"},
+  {id: "8", nome: 'Oxygen', cpf: "15.9994", matricula: 'O', dataNascimento: "2020"},
+  {id: "9", nome: 'Fluorine', cpf: "18.9984", matricula: 'F', dataNascimento: "2020"},
+  {id: "10", nome: 'Neon', cpf: "20.1797", matricula: 'Ne', dataNascimento: "2020"},
 ];
 
 @Component({
@@ -29,27 +23,33 @@ const ELEMENT_DATA: PeriodicElement[] = [
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
   <!-- Position Column -->
-  <ng-container matColumnDef="position">
+  <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef> No. </th>
-    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
   </ng-container>
 
-  <!-- Name Column -->
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef> Name </th>
-    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  <!-- nome Column -->
+  <ng-container matColumnDef="nome">
+    <th mat-header-cell *matHeaderCellDef> nome </th>
+    <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
   </ng-container>
 
-  <!-- Weight Column -->
-  <ng-container matColumnDef="weight">
-    <th mat-header-cell *matHeaderCellDef> Weight </th>
-    <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+  <!-- cpf Column -->
+  <ng-container matColumnDef="cpf">
+    <th mat-header-cell *matHeaderCellDef> cpf </th>
+    <td mat-cell *matCellDef="let element"> {{element.cpf}} </td>
   </ng-container>
 
-  <!-- Symbol Column -->
-  <ng-container matColumnDef="symbol">
-    <th mat-header-cell *matHeaderCellDef> Symbol </th>
-    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+  <!-- matricula Column -->
+  <ng-container matColumnDef="matricula">
+    <th mat-header-cell *matHeaderCellDef> matricula </th>
+    <td mat-cell *matCellDef="let element"> {{element.matricula}} </td>
+  </ng-container>
+
+    <!-- matricula Column -->
+  <ng-container matColumnDef="matricula">
+    <th mat-header-cell *matHeaderCellDef> matricula </th>
+    <td mat-cell *matCellDef="let element"> {{element.matricula}} </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -63,7 +63,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class AlunoComponent implements OnInit {
   public alunos = Array<AlunoModelo>();
 
-  displayedColumns: string[] = ["position", "name", "weight", "symbol"];
+  displayedColumns: string[] = ["id", "nome", "cpf", "matricula", "dataNascimento"];
 
   dataSource = ELEMENT_DATA;
 
