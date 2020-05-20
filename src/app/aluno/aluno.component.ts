@@ -11,35 +11,35 @@ const ELEMENT_DATA: AlunoModelo[] = [];
   selector: "app-aluno",
   template: `
     <div class="mat-elevation-z8">
-      <table mat-table [dataSource]="dataSource">
+      <table mat-table [dataSource]="dataSource" >
         <!-- Id Column -->
         <ng-container matColumnDef="id">
           <th mat-header-cell *matHeaderCellDef>id</th>
-          <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+          <td mat-cell *matCellDef="let element" (click)="navegaParaDetalhe(element)">{{ element.id }}</td>
         </ng-container>
 
         <!-- Nome Column -->
         <ng-container matColumnDef="nome">
           <th mat-header-cell *matHeaderCellDef>Nome</th>
-          <td mat-cell *matCellDef="let element">{{ element.nome }}</td>
+          <td mat-cell *matCellDef="let element" (click)="navegaParaDetalhe(element)">{{ element.nome }}</td>
         </ng-container>
 
         <!-- Cpf Column -->
         <ng-container matColumnDef="cpf">
           <th mat-header-cell *matHeaderCellDef>Cpf</th>
-          <td mat-cell *matCellDef="let element">{{ element.cpf }}</td>
+          <td mat-cell *matCellDef="let element" (click)="navegaParaDetalhe(element)">{{ element.cpf }}</td>
         </ng-container>
 
         <!-- Matricula Column -->
         <ng-container matColumnDef="matricula">
           <th mat-header-cell *matHeaderCellDef>Matricula</th>
-          <td mat-cell *matCellDef="let element">{{ element.matricula }}</td>
+          <td mat-cell *matCellDef="let element" (click)="navegaParaDetalhe(element)">{{ element.matricula }}</td>
         </ng-container>
 
         <!-- Data de Nascimento Column -->
         <ng-container matColumnDef="dataNascimento">
           <th mat-header-cell *matHeaderCellDef>Data de nascimento</th>
-          <td mat-cell *matCellDef="let element">{{ element.dataNascimento }}</td>
+          <td mat-cell *matCellDef="let element" (click)="navegaParaDetalhe(element)">{{ element.dataNascimento }}</td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="colunas"></tr>
@@ -72,5 +72,9 @@ export class AlunoComponent implements OnInit {
       .catch((erro: any) => {
         console.error(erro);
       });
+  }
+
+  navegaParaDetalhe(entrada: AlunoModelo){
+
   }
 }
