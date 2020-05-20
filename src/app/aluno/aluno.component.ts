@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { MatTableDataSource } from "@angular/material/table";
 import { MatPaginator } from "@angular/material/paginator";
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { AlunoModelo } from "../modelos/aluno";
 import { AlunoService } from "../aluno.service";
@@ -59,7 +60,7 @@ export class AlunoComponent implements OnInit {
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
-  constructor(private alunoService: AlunoService) {}
+  constructor(private alunoService: AlunoService, private router: Router) {}
 
   ngOnInit(): void {
     this.dataSource.paginator = this.paginator;
@@ -75,6 +76,6 @@ export class AlunoComponent implements OnInit {
   }
 
   navegaParaDetalhe(entrada: AlunoModelo){
-
+    this.router.navigate(['detalhe/' + entrada.id])
   }
 }
