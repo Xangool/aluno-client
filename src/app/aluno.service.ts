@@ -19,7 +19,6 @@ export class AlunoService {
 			.then((resposta) => {
         let alunoLista: Array<AlunoModelo> = new Array<AlunoModelo>();
 				if (((resposta !== null) && (resposta !== undefined))) {
-          console.log(resposta)
 					for (let aluno of resposta) {
 						alunoLista.push(AlunoModelo.factory(aluno));
 					}

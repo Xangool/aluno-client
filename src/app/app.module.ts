@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { AlunoComponent } from './aluno/aluno.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AlunoDetalheComponent } from './aluno-detalhe/aluno-detalhe.component';
+import { AlunoDetalheComponent } from './aluno/aluno-detalhe.component';
 
 @NgModule({
   declarations: [
