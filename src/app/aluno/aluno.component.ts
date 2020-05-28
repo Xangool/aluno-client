@@ -87,17 +87,12 @@ const ELEMENT_DATA: AlunoModelo[] = [];
   styles: [``],
 })
 export class AlunoComponent implements OnInit {
+
   public alunos = Array<AlunoModelo>();
 
-  colunas: string[] = ["id", "nome", "cpf", "matricula", "dataNascimento"];
+  public colunas: string[] = ["id", "nome", "cpf", "matricula", "dataNascimento"];
 
-  dataSource = new MatTableDataSource<AlunoModelo>(ELEMENT_DATA);
-
-  private alunosSubject = new BehaviorSubject<AlunoModelo[]>([]);
-
-  private carregaSubject = new BehaviorSubject<boolean>(false);
-
-  public loading$ = this.carregaSubject.asObservable();
+  public dataSource = new MatTableDataSource<AlunoModelo>(ELEMENT_DATA);
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
@@ -110,15 +105,6 @@ export class AlunoComponent implements OnInit {
 
   navegaParaDetalhe(entrada: AlunoModelo) {
     this.router.navigate(["detalhe/" + entrada.id]);
-  }
-
-  conecta(collectionViewer: CollectionViewer): Observable<AlunoModelo[]> {
-    return this.alunosSubject.asObservable();
-  }
-
-  desconecta(collectionViewer: CollectionViewer): void {
-    this.alunosSubject.complete();
-    this.carregaSubject.complete();
   }
 
   carregaAlunos() {

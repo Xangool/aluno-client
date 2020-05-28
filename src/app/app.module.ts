@@ -5,6 +5,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { AppComponent } from './app.component';
 import { AlunoComponent } from './aluno/aluno.component';
+import { AlunoDataSource } from './aluno/aluno.datasource';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AlunoDetalheComponent } from './aluno/aluno-detalhe.component';
@@ -15,6 +16,7 @@ import { AppRoutingModule } from './app-routing.module';
     AppComponent,
     AlunoComponent,
     AlunoDetalheComponent,
+    AlunoDataSource,
   ],
   imports: [
     BrowserModule,
