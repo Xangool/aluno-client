@@ -1,12 +1,11 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { MatTableDataSource } from "@angular/material/table";
 import { MatPaginator } from "@angular/material/paginator";
-import { ActivatedRoute, Router } from "@angular/router";
-import { CollectionViewer, DataSource } from "@angular/cdk/collections";
-import { BehaviorSubject, Observable } from "rxjs";
+import { Router } from "@angular/router";
 
 import { AlunoModelo } from "../modelos/aluno.modelo";
 import { AlunoService } from "../aluno.service";
+import { AlunoDataSource } from './aluno.datasource';
 
 const ELEMENT_DATA: AlunoModelo[] = [];
 
@@ -75,8 +74,8 @@ const ELEMENT_DATA: AlunoModelo[] = [];
           </td>
         </ng-container>
 
-        <tr mat-header-row *matHeaderRowDef="colunas"></tr>
-        <tr mat-row *matRowDef="let row; columns: colunas"></tr>
+        <tr mat-header-row *matHeaderRowDef="alunoDataSource.colunas"></tr>
+        <tr mat-row *matRowDef="let row; columns: alunoDataSource.colunas"></tr>
       </table>
       <mat-paginator
         [pageSizeOptions]="[5, 10, 20]"
@@ -87,12 +86,11 @@ const ELEMENT_DATA: AlunoModelo[] = [];
   styles: [``],
 })
 export class AlunoComponent implements OnInit {
-
   public alunos = Array<AlunoModelo>();
 
-  public colunas: string[] = ["id", "nome", "cpf", "matricula", "dataNascimento"];
-
   public dataSource = new MatTableDataSource<AlunoModelo>(ELEMENT_DATA);
+
+  public alunoDataSource: AlunoDataSource = new AlunoDataSource();
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 

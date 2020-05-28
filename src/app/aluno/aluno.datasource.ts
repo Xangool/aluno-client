@@ -11,6 +11,8 @@ export class AlunoDataSource extends DataSource<any> {
 
   public loading$ = this.carregaSubject.asObservable();
 
+  public colunas: string[] = ["id", "nome", "cpf", "matricula", "dataNascimento"];
+
   connect(collectionViewer: CollectionViewer): Observable<AlunoModelo[]> {
     return this.alunosSubject.asObservable();
   }
