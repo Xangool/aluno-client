@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { CollectionViewer, DataSource } from "@angular/cdk/collections";
 import { BehaviorSubject, Observable } from "rxjs";
 
-import { AlunoModelo } from "../modelos/aluno";
+import { AlunoModelo } from "../modelos/aluno.modelo";
 import { AlunoService } from "../aluno.service";
 
 const ELEMENT_DATA: AlunoModelo[] = [];

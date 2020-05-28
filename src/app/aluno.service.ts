@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 
-import { AlunoModelo } from './modelos/aluno';
+import { AlunoModelo } from './modelos/aluno.modelo';
 
 @Injectable({
   providedIn: 'root'
