@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 import { MatTableDataSource } from "@angular/material/table";
 import { MatPaginator } from "@angular/material/paginator";
 import { Router } from "@angular/router";
+import { BehaviorSubject, Observable } from "rxjs";
+import { MatSort } from '@angular/material/sort';
 
 import { AlunoModelo } from "../modelos/aluno.modelo";
 import { AlunoService } from "../aluno.service";
@@ -86,11 +88,16 @@ const ELEMENT_DATA: AlunoModelo[] = [];
   styles: [``],
 })
 export class AlunoComponent implements OnInit {
+
+  private sort: MatSort;
+
   public alunos = Array<AlunoModelo>();
 
   public dataSource = new MatTableDataSource<AlunoModelo>(ELEMENT_DATA);
 
-  public alunoDataSource: AlunoDataSource = new AlunoDataSource();
+  public alunoDataSource: AlunoDataSource | null;
+
+  private subject: BehaviorSubject<AlunoModelo[]> = new BehaviorSubject<AlunoModelo[]>([])
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
@@ -98,6 +105,7 @@ export class AlunoComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataSource.paginator = this.paginator;
+    this.alunoDataSource = new AlunoDataSource(this.subject);
     this.carregaAlunos();
   }
 
@@ -111,6 +119,7 @@ export class AlunoComponent implements OnInit {
       .then((entitidades: Array<AlunoModelo>) => {
         this.alunos = entitidades;
         this.dataSource.data = entitidades;
+        // this.alunoDataSource
       })
       .catch((erro: any) => {
         console.error(erro);
